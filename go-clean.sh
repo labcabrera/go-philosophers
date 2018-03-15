@@ -1,5 +1,8 @@
 #!/bin/bash
 
-rm main
-rm rules-*
+if [ -f main ]; then
+  rm main
+fi
+
+find . -name 'rules-*' -exec rm {} +
 
