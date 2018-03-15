@@ -237,7 +237,7 @@ func evalWinner(g *PhilosopherGame) byte {
   log.Println("Eval board winner ", g)
   for i = 0 ; i < 8 ; i++ {
     t = g.board[v[i][0]];
-    log.Println(" ... ", t, g.board[v[i][1]], g.board[v[i][2]])
+    //log.Println(" ... ", t, g.board[v[i][1]], g.board[v[i][2]])
     if(t > 0 && t == g.board[v[i][1]] && t == g.board[v[i][2]]) {
       log.Println("We have a winner ", t)
       return t
