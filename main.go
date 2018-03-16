@@ -133,7 +133,7 @@ func run(options *PhilosopherSimulationOptions) {
   readRulesFromFile(player01, options.ruleFile1)
 
   player02 := new(Philosopher)
-  player02.name = "Nietzsche"
+  player02.name = "Kant"
   player02.adapter = new(DefaultGeneticRuleAdapter)
   readRulesFromFile(player02, options.ruleFile2)
 
@@ -191,8 +191,12 @@ func simulateGame(g *PhilosopherGame, p01 *Philosopher, p02 *Philosopher) {
     log.Println("Current player ", currentPlayer.name)
   
     simulateMove(g, currentPlayer, playerValue)
+    //TODO catch 'no available rule' exception here
 
-    log.Println("Status after move: ", g.board)
+    log.Println("Status after move:")
+    log.Println("  ", g.board[0], g.board[1], g.board[2])
+    log.Println("  ", g.board[3], g.board[4], g.board[5])
+    log.Println("  ", g.board[6], g.board[7], g.board[8])
     winner = evalWinner(g)
   }  
 }
@@ -214,6 +218,7 @@ func simulateMove(g *PhilosopherGame, p *Philosopher, playerValue byte) {
       p.adapter.invalid(rule)
     }
   }
+  panic("No available rules")
 }
 
 /** 0: no winner

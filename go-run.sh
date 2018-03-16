@@ -1,9 +1,13 @@
 #!/bin/bash
 
-rm *.dat
+RFOLDER=./random-rules
 
-./main -option=gen-rules -filename=rules-01.dat -count=1000
-./main -option=gen-rules -filename=rules-02.dat -count=10000
-./main -option=run -ruleFile1=rules-01.dat -ruleFile2=rules-02.dat -count=1
+if [ ! -d $RFOLDER ];then
+  mkdir random-rules
+fi
+
+./main -option=gen-rules -filename=$RFOLDER/rules-01.dat -count=50000
+./main -option=gen-rules -filename=$RFOLDER/rules-02.dat -count=100000
+./main -option=run -ruleFile1=$RFOLDER/rules-01.dat -ruleFile2=$RFOLDER/rules-02.dat -count=1
+
 #./main option=process-rules filename = rules-01.dat
-

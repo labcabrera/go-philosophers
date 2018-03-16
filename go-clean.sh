@@ -4,5 +4,6 @@ if [ -f main ]; then
   rm main
 fi
 
-find . -name 'rules-*' -exec rm {} +
-
+if [ -d random-rules ]; then
+  rm -r random-rules
+fi
